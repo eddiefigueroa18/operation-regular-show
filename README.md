@@ -2,29 +2,25 @@
 A tutorial on Regex for matching an Email 
 
 ## Summary
-
-Regular Expressions, often referred to as REGEX, are encoded text strings with the purpose of matching patterns in other strings. An email REGEX allows you to validate the structure of an email address.  In this tutorial we will brake down the basic structure of an email REGEX. Email REGEX's have many special characters, and at first glance it may look like a bunch of nonsense. We will go through each character as well as define and explain what exactly those characters are doing. The example we will be using is this one: `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
-
+Regular Expressions, often referred to as REGEX, are encoded text strings with the purpose of matching patterns in other strings. An email REGEX allows you to validate the structure of an email address.  In this tutorial we will brake down the basic structure of an email REGEX. Email REGEX's have many special characters, and at first glance it may look like a bunch of nonsense. We will go through each character as well as define and explain what exactly those characters are doing. The example we will be using is: `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
 
 ## Table of Contents
 - [Regex Components](#regex-components)
 - [Anchors](#anchors)
 - [Quantifiers](#quantifiers)
-- [OR Operator](#or-operator)
 - [Character Classes](#character-classes)
-- [Flags](#flags)
 - [Grouping and Capturing](#grouping-and-capturing)
 - [Bracket Expressions](#bracket-expressions)
-- [Greedy and Lazy Match](#greedy-and-lazy-match)
-- [Boundaries](#boundaries)
-- [Back-references](#back-references)
-- [Look-ahead and Look-behind](#look-ahead-and-look-behind)
+- [Author](#author)
 
 ## Regex Components
 There are many components to a REGEX and they are considered a literal. Because of this, we use characters to define what is a literal and what isn't by using the character ( `/` ),  a.k.a backslash. 
-Example: `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/` Everything within the ( `/` ) is considered a literal. We will explain a little bit more in the anchors section below.
+Example: `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/` Everything within the ( `/` ) is considered a literal. To explain quickly what we are looking at, break the regex down into the grouped sections within the parenthesis:
+* `([a-z0-9_\.-]+)` The string can contain any lowercase letter between `a-z`, any number between `0-9`. Can contain an underscore, backslash, period or dash. This can be repeated more than once. Followed by the `@` symbol. 
+* `([\da-z\.-]+)` The string can contain any arabic digit, any lowercase letter `a-z`. Can contain a backslash, period or dash. Followed by a backslash or period. 
+* `([a-z\.]{2,6})` The string can contain any lowercase letter `a-z`. Can contain a backslash or period. The string is between `2-6` characters long. 
 
-`///////////////////////////////////   break down regex here   \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\`
+To break it down with more detail we will explain a little bit more starting with the anchors section below. 
 
 ### Anchors
 There are several types of anchors. For our email REGEX we we will be using ( `^` ) and ( `$` ). The ( `^` ) anchor represents a string that begins with the characters that follows it. This can go one of two ways. First, an exact string match. Second, a range of possible matches. 
@@ -40,10 +36,10 @@ The ( `$` ) anchor represents a string that ends with the characters that preced
 * ( `{}` ) These curly brackets limit character matches.
     - In our REGEX we can se that there is `{2, 6}` character limit. This means that we have want to search for the preceding string pattern a minimum of 2 times and a maximum of 6 times. 
 
-
-
 ### Character Classes
-
+Character classes define a set of characters. There are several types of character classes, but for our email regex we only see  ( `\d` ) and  ( `.` ) 
+* ( `\d` ) This will match and arabic numeral digit. This is the same thing as the bracket expression `[0-9]`. Meaning we can match any number between `0` and `9`.
+* ( `.` ) This matches with any character except for the ( `\n` ) character class. 
 
 ### Grouping and Capturing
 As regex's grow more and more complex, one can define specific groups or captures of the regex. You can require different sections of the regex to fulfill different requirements by using grouping constructs. We do this by using the ( `()` ), a.k.a parenthesis. These sections in the regex are known as subexpressions. In our email regex we see multiple instances of subexpressions such as: `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`. To break it down simply, there are three different subexpressions. 
@@ -56,5 +52,5 @@ As mentioned earlier, the expressions `[]` represents a range of characters that
 * Ex: `[act]`, we can look for a string that has `a` or `c` or `t` regardless of the string length. All of the following examples would match: `"aaaaaaaa"`, `"coward"`, `"treasure"`, `"cat"` and `"tac"`.
 
 ## Author
-
-A short section about the author with a link to the author's GitHub profile (replace with your information and a link to your profile)
+Eduardo Figueroa
+[Github Profile](https://github.com/eddiefigueroa18)
