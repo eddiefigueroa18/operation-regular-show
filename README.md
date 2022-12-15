@@ -1,11 +1,10 @@
 # operation-regular-show
-A tutorial on Regex for matching on Email 
+A tutorial on Regex for matching an Email 
 
 ## Summary
 
 Regular Expressions, often referred to as REGEX, are encoded text strings with the purpose of matching patterns in other strings. An email REGEX allows you to validate the structure of an email address.  In this tutorial we will brake down the basic structure of an email REGEX. Email REGEX's have many special characters, and at first glance it may look like a bunch of nonsense. We will go through each character as well as define and explain what exactly those characters are doing. The example we will be using is this one: `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`
 
-<!-- Briefly summarize the regex you will be describing and what you will explain. Include a code snippet of the regex. Replace this text with your summary. -->
 
 ## Table of Contents
 - [Regex Components](#regex-components)
@@ -42,23 +41,19 @@ The ( `$` ) anchor represents a string that ends with the characters that preced
     - In our REGEX we can se that there is `{2, 6}` character limit. This means that we have want to search for the preceding string pattern a minimum of 2 times and a maximum of 6 times. 
 
 
-### OR Operator
 
 ### Character Classes
 
-### Flags
 
 ### Grouping and Capturing
+As regex's grow more and more complex, one can define specific groups or captures of the regex. You can require different sections of the regex to fulfill different requirements by using grouping constructs. We do this by using the ( `()` ), a.k.a parenthesis. These sections in the regex are known as subexpressions. In our email regex we see multiple instances of subexpressions such as: `/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/`. To break it down simply, there are three different subexpressions. 
+* The first group: `([a-z0-9_\.-]+)` followed by an @ symbol
+* The second group: `([\da-z\.-]+)` followed by an optional `\` or `.`
+* The third group: `([a-z\.]{2,6})`
 
 ### Bracket Expressions
-
-### Greedy and Lazy Match
-
-### Boundaries
-
-### Back-references
-
-### Look-ahead and Look-behind
+As mentioned earlier, the expressions `[]` represents a range of characters that you would like to match. In the bracket expressions we can include all the characters we want and don't want.
+* Ex: `[act]`, we can look for a string that has `a` or `c` or `t` regardless of the string length. All of the following examples would match: `"aaaaaaaa"`, `"coward"`, `"treasure"`, `"cat"` and `"tac"`.
 
 ## Author
 
